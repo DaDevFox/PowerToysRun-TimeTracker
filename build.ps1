@@ -25,14 +25,14 @@ if ($?) {
 
         Write-Host "Updated version number in plugin.json."
 
-        [xml]$project_xml = Get-Content -Path ".\TimeTracker\TimeTracker.csproj"
+        [xml]$project_xml = Get-Content -Path ".\TimeTracker\Community.PowerToys.Run.Plugin.TimeTracker.csproj"
         $project_xml.Project.PropertyGroup.Version = $Version
-        $project_xml.Save(".\TimeTracker\TimeTracker.csproj")
+        $project_xml.Save(".\TimeTracker\Community.PowerToys.Run.Plugin.TimeTracker.csproj")
 
         Write-Host "Updated verion number in project-file.`n"
     }
 
-    dotnet build .\TimeTracker.sln /target:TimeTracker /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary /p:Configuration=Release /p:Platform="x64"
+    dotnet build .\Community.PowerToys.Run.Plugin.TimeTracker.sln /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary /p:Configuration=Release /p:Platform="x64"
 
     if ($?) {
         $source = ".\TimeTracker\bin\x64\Release\net8.0-windows"
